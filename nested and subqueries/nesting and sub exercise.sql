@@ -25,17 +25,20 @@ WHERE
             ShipVia = 3);
             
 -- What are the order ids of the orders that ordered Sasquatch Ale?
+
+SELECT ProductID
+FROM products
+WHERE ProductName = "Sasquatch Ale";
+
 SELECT 
-    OrderID, ProductID
+    OrderID
 FROM
     `order details`
 WHERE
-    ProductID IN (SELECT 
-            ProductID
-        FROM
-            `order details`
-        WHERE
-            ProductID = 34);
+    ProductID IN (SELECT ProductID
+FROM products
+WHERE ProductName = "Sasquatch Ale");
+            
 	
 -- What is the name of the employee that sold 10266?
 SELECT 
