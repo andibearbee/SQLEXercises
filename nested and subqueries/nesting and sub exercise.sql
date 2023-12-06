@@ -40,28 +40,31 @@ FROM products
 WHERE ProductName = "Sasquatch Ale");
             
 	
--- What is the name of the employee that sold 10266?
+-- What is the name of the employee that sold order 10266?
+SELECT *
+FROM orders
+WHERE OrderID = "10266";
+
 SELECT 
     FirstName, LastName
 FROM
     employees
 WHERE
-    EmployeeID IN (SELECT 
-            EmployeeID
-        FROM
-            employees
-        WHERE
-            EmployeeID = 3);
+    EmployeeID = (SELECT EmployeeID
+FROM orders
+WHERE OrderID = "10266");
+
             
 -- What is the name of the customer who bought 10266?
+SELECT CustomerID
+FROM orders
+WHERE orderID = 10266;
+
 SELECT 
     CompanyName
 FROM
     Customers
 WHERE
-    CustomerID IN (SELECT 
-            CustomerID
-        FROM
-            Customers
-        WHERE
-            CustomerID LIKE '%WARTH%');
+    CustomerID IN (SELECT CustomerID
+FROM orders
+WHERE orderID = 10266);
